@@ -7,6 +7,6 @@ This shows a problem with UICollectionView where supplementary views become dupl
 
 Steps to reproduce:
 
-1. Run on the iPad simulator or iPad device.
+1. Run on the iPhone simulator or iPhone device.
 1. Scroll around.
 1. Notice the duplicated green views.
