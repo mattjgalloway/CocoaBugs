@@ -12,9 +12,9 @@ I should add that if the number of concurrent connections (i.e. the initial coun
 
 Steps to Reproduce:
 
-  1) Open the attached sample project.
-  1) Run it on an iOS device (currently I've seen this on iPad running iOS 6.1, but I'm going to try on other devices as well).
-  1) Notice that eventually the network requests will lock up and stall. Only after the TCP connection to the server is yanked for whatever reason do new requests start being processed again.
+  1. Open the attached sample project.
+  1. Run it on an iOS device (currently I've seen this on iPad running iOS 6.1, but I'm going to try on other devices as well).
+  1. Notice that eventually the network requests will lock up and stall. Only after the TCP connection to the server is yanked for whatever reason do new requests start being processed again.
 
 Expected Results:
 All requests are processed successfully.
