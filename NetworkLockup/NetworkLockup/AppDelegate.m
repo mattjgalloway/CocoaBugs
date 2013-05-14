@@ -26,32 +26,18 @@
     });
 }
 
-- (void)_requestFinishedWithError:(NSError*)error {
-    _completion(error);
-}
-
 
 #pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self _requestFinishedWithError:error];
+    _completion(error);
 }
 
 
 #pragma mark - NSURLConnectionDataDelegate
 
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
-    return request;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self _requestFinishedWithError:nil];
+    _completion(nil);
 }
 
 @end
