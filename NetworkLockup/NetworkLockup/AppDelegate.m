@@ -64,9 +64,10 @@
         dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
         
         Request *request = [[Request alloc] init];
-        
-        [_requests addObject:request];
-        [self tellCurrentStatus];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [_requests addObject:request];
+            [self tellCurrentStatus];
+        });
         
         NSURL *url = [NSURL URLWithString:@"http://www.galloway.me.uk/media/other/empty_file.txt"];
         
@@ -89,9 +90,7 @@
 - (void)tellCurrentStatus {
     NSString *status = [NSString stringWithFormat:@"Queue size = %i. Inflight = %i.", _queueSize, _requests.count];
     NSLog(@"%@", status);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _label.text = status;
-    });
+    _label.text = status;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
