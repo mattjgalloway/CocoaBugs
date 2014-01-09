@@ -30,8 +30,8 @@
         
         for (int i = 0; i < 1000000; i++) {
             Entity *entity = [Entity insertInManagedObjectContext:self.managedObjectContext];
-            entity.generic = @"something";
-            entity.custom = @"something";
+            entity.generic = @"something"; ///< Time profiler shows 6.3% time here
+            entity.custom = @"something"; ///< Time profiler shows 19.9% time here
         }
         
         uint64_t end = [self _currentTime];
